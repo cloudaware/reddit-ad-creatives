@@ -45,7 +45,7 @@ AD_GROUPS = [
     {
         "key": "aws",
         "name": "Single-cloud / AWS at scale",
-        "communities": ["aws", "sysadmin", "devops", "Terraform"],  # targeting uses NAMES, not t5_ ids
+        "communities": ["aws", "sysadmin", "devops", "Terraform", "sre"],  # targeting uses NAMES, not t5_ ids
         "image": f"{RAW}/scale-aws-light.png",
         "utm": "aws-light",
         "headline": ("Every public IP across 5,000+ AWS accounts — in one question. "
@@ -54,7 +54,8 @@ AD_GROUPS = [
     {
         "key": "multicloud",
         "name": "Multi-cloud at scale",
-        "communities": ["cloudcomputing", "cloudengineering", "googlecloud", "AZURE", "ITManagers"],
+        "communities": ["cloudcomputing", "cloudengineering", "googlecloud", "AZURE",
+                        "ITManagers", "servicenow", "CloudSecurityPros"],
         "image": f"{RAW}/scale-multicloud-light.png",
         "utm": "multicloud-light",
         "headline": ("One question across AWS, Azure & GCP. CloudAware unifies every account into one "
@@ -118,7 +119,14 @@ def main():
                 "bid_strategy": "BIDLESS",   # automatic/lowest-cost (matches the other running campaign)
                 "bid_type": "CPC",
                 "start_time": START_TIME,
-                "targeting": {"geolocations": GEO, "communities": g["communities"]},
+                "targeting": {
+                    "geolocations": GEO,
+                    "communities": g["communities"],
+                    "locations": ["FEED", "COMMENTS_PAGE"],  # Feed + Conversations
+                    "platforms": ["ALL"],
+                    "view_modes": ["ALL"],
+                    "expand_targeting": False,               # no audience expansion
+                },
             }, f"ad_group[{g['utm']}]")
 
         dest = utm(g["utm"])
