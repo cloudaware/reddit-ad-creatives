@@ -127,7 +127,7 @@ def main():
         pp = post(f"/profiles/{PROFILE_ID}/posts", {
             "type": "IMAGE",
             "headline": g["headline"],
-            "allow_comments": True,
+            "allow_comments": False,
             "content": [{
                 "media_url": g["image"],
                 "destination_url": dest,
