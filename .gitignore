@@ -1,0 +1,13 @@
+# Secrets — NEVER commit
+.reddit_creds
+reddit_tokens.json
+*.token
+*.secret
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Local artifacts
+openapi.json
