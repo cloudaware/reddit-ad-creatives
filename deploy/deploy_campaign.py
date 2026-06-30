@@ -27,7 +27,6 @@ FUNDING_ID    = "1849230"
 PROFILE_ID    = "t2_2hl740xkqa"
 GEO           = ["US"]
 DAILY_BUDGET  = 50_000_000          # $50.00/day in micro-USD
-BID_VALUE     = 1_000_000           # $1.00 max CPC in micro-USD (CPC ad groups require a bid)
 LANDING       = "https://cloudaware.com/cmdb/"
 DISPLAY_URL   = "cloudaware.com"
 RAW = "https://raw.githubusercontent.com/cloudaware/reddit-ad-creatives/main/images"
@@ -116,9 +115,8 @@ def main():
                 "configured_status": "PAUSED",
                 "goal_type": "DAILY_SPEND",
                 "goal_value": DAILY_BUDGET,
-                "bid_strategy": "MANUAL_BIDDING",
+                "bid_strategy": "BIDLESS",   # automatic/lowest-cost (matches the other running campaign)
                 "bid_type": "CPC",
-                "bid_value": BID_VALUE,
                 "start_time": START_TIME,
                 "targeting": {"geolocations": GEO, "communities": g["communities"]},
             }, f"ad_group[{g['utm']}]")
